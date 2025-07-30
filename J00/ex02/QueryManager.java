@@ -9,7 +9,7 @@ public class QueryManager {
 		while (true) {
 		int query = myScan.nextInt();
 			if (query == 42) {
-				System.out.println(counter);
+				System.out.println(counter + "coffee related queries");
 				System.exit(0);
 			}
 			else if (primeCheck(query) == true)
