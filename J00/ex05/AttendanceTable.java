@@ -38,9 +38,6 @@ public class AttendanceTable {
 				}
 			}
 		}
-		for (int i = 0; i < classCount; i++) {
-			System.out.println(classDate[i] + " " + classTime[i] + " ");
-		}
 
 		int classMonth = 0;
 		for (int i = 0; i < classCount; i++) {
@@ -49,7 +46,13 @@ public class AttendanceTable {
 			else
 				classMonth += 4;
 		}
-		int[][] attendance = new int[students.length][classMonth]; //Students lenght va messo manualmente per non avere errori
+
+		int StudentsArrLen = 0;
+		for (int i = 0; i < students.length; i++) {
+			if (students[i] != null)
+				StudentsArrLen++;
+		}
+		int[][] attendance = new int[StudentsArrLen][classMonth]; //Students lenght va messo manualmente per non avere errori
 
 		while (true) {
 			String studentPresence = myScan.next();
@@ -59,13 +62,20 @@ public class AttendanceTable {
 			int datePresence = myScan.nextInt();
 			int presence = myScan.next().equals("HERE") ? 1 : -1;
 
-			for (int i = 0; i < students.length; i++) {
+			
+			
+			for (int i = 0; i < StudentsArrLen; i++) {
+				int week = 1;
 				for (int j = 0; j < classMonth; j++) {
-					if (studentPresence.equals(students[i]) && datePresence == classDate[j] && timePresence == classTime[j]) {
+					if (j > 0 && j % classCount == 0)
+						week++;
+					int day = classDate[j % classCount] + ((week - 1) * 7);
+					if (studentPresence.equals(students[i]) && datePresence == day && timePresence == classTime[j % classCount]) {
 						attendance[i][j] = presence;
-						i = students.length; //optimizing performances
+						i = StudentsArrLen; //optimizing performances
 						j = classMonth;
 					}
+					
 				}
 			}
 		}
@@ -76,14 +86,18 @@ public class AttendanceTable {
 		for (int i = 0; i < classMonth; i++) {
 			for (int j = 0; j < classCount; j++) {
 				int day = classDate[j] + ((week - 1) * 7);
-				String spaces = day >= 10 ? "  " : "   ";
-				System.out.print(classTime[j] + ":00 " + weekdays[classDate[j] - 1] + spaces + day + "|");
+				if (day < 31) {
+					String spaces = day >= 10 ? "  " : "   ";
+					System.out.print(classTime[j] + ":00 " + weekdays[classDate[j] - 1] + spaces + day + "|");
+					i++;
+				}
 			}
+			i--;
 			week++;
 		}
 		System.out.println("");
 
-		for (int i = 0; i < students.length; i++) {
+		for (int i = 0; i < StudentsArrLen; i++) {
 			int spaces = 11 - students[i].length();
 			for (int q = 0; q < spaces; q++) {
 				System.out.print(" ");
@@ -92,7 +106,7 @@ public class AttendanceTable {
 
 			for (int j = 0; j < classMonth; j++) {
 				System.out.print("         ");
-				if (attendance[i][j] > 0)
+				if (attendance[i][j] >= 0)
 					System.out.print(" ");
 				System.out.print(attendance[i][j] + "|");
 			}
