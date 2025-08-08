@@ -13,7 +13,7 @@ public class FileStream {
 		file2 = toRead2;
 
 		try {
-			this.toRead2 = new BufferedReader(new FileReader(toRead1));
+			this.toRead1 = new BufferedReader(new FileReader(toRead1));
 		} catch (IOException err) { System.out.println(err.getMessage()); }
 
 		try {
@@ -43,7 +43,7 @@ public class FileStream {
 		}
 
 		try {
-			this.toRead2 = new BufferedReader(new FileReader(this.file1));
+			this.toRead1 = new BufferedReader(new FileReader(this.file1));
 		} catch (IOException err) { System.out.println(err.getMessage()); }
 
 		try {
