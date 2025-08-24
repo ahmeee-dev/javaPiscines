@@ -14,6 +14,8 @@ public class Main {
 			else if (input.substring(0,2).equals("cd")) {
 				path = path.resolve(input.substring(3)).normalize();
 			}
+			if (input.equals("exit"))
+				System.exit(0);
 		}
 		
 	}
