@@ -8,13 +8,13 @@ public final class lsFunction {
 			throw new UnsupportedOperationException("This class cannot be instanciated");
 		}
 
-		public static void lsExec() {
+		public static void lsExec(Path path) {
 			try {
-				Stream<Path> stream = Files.list(Paths.get(""));
+				Stream<Path> stream = Files.list(path);
 				stream.forEach(f -> {
 					try {
 						long size = Files.size(f) / 1024;
-						System.out.println( f + " " + size + " KB");
+						System.out.println( f.toString().substring(path.toString().length() + 1) + " " + size + " KB");
 					} catch (IOException err) { System.out.print(err.getMessage());	} 
 				});
 				stream.close();
