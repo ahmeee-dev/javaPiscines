@@ -14,12 +14,12 @@ public final class lsFunction {
 				stream.forEach(f -> {
 					try {
 						long size = Files.size(f) / 1024;
-						System.out.println( f.toString().substring(path.toString().length() + 1) + " " + size + " KB");
-					} catch (IOException err) { System.out.print(err.getMessage());	} 
+						System.out.println( f.toString().substring(path.toString().length()) + " " + size + " KB");
+					} catch (IOException err) { System.out.print("Error: " + err.getMessage());	} 
 				});
 				stream.close();
 			} catch (IOException err) {
-				System.out.println(err.getMessage());
+				System.out.println("Error: " + err.getMessage());
 			}
 		}
 }
