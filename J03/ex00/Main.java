@@ -2,7 +2,12 @@ import javax.print.DocFlavor.INPUT_STREAM;
 
 public class Main {
 	public static void main(String[] args) {
-		int count = Integer.parseInt(args[0].substring(8));
+		int count = 0;
+		try {
+			if (args[0].length() < 8) 
+				throw (new IllegalArgumentException());
+			count = Integer.parseInt(args[0].substring(8));
+		} catch (IllegalArgumentException err) { System.out.println("Error: wrong argument"); };
 		EggThread egg = new EggThread(count);
 		Thread eggThread = new Thread(egg);
 		HenThread hen = new HenThread(count);
