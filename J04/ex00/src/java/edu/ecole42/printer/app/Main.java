@@ -23,12 +23,12 @@ class Main {
 		final char white = ' ';
 		final char black = '0';
 		File file;
-		BufferedImage img = null;
+		
 		try {
 			file = new File(args[0]);
-			img = ImageIO.read(file);
+			BufferedImage img = ImageIO.read(file);
+			Interpoler interpoler = new Interpoler(img, black, white);
+			interpoler.print();
 		} catch (Exception err) { err.printStackTrace();System.exit(2); }
-		Interpoler interpoler = new Interpoler(img, black, white);
-		interpoler.print();
 	}
 }
