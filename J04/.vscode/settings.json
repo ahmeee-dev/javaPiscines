@@ -1,0 +1,6 @@
+{
+	"java.project.sourcePaths": [
+		"imgToChar/src/java",
+		"ImgToChar/lib"
+	]
+}

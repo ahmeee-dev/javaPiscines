@@ -1,5 +1,6 @@
 package logic;
 import java.awt.image.*;
+import java.rmi.UnexpectedException;
 
 public class Interpoler {
 	private final BufferedImage image;
