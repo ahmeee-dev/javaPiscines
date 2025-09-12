@@ -1,0 +1,32 @@
+CREATE SCHEMA IF NOT EXISTS Chat;
+
+CREATE TABLE Chat.users (
+	id SERIAL PRIMARY KEY,
+	login TEXT NOT NULL UNIQUE,
+	password TEXT,
+);
+
+CREATE TABLE Chat.chatrooms (
+	id SERIAL PRIMARY KEY,
+	name TEXT NOT NULL,
+);
+
+CREATE TABLE Chat.users_chatrooms (
+	owner INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+	userID INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+	chatroomID INT NOT NULL REFERENCES chatrooms(id) ON DELETE CASCADE
+)
+
+
+CREATE TABLE Chat.messages (
+	id SERIAL PRIMARY KEY,
+	text NOT NULL TEXT,
+	date NOT NULL TEXT 
+);
+
+
+CREATE TABLE Chat.chatrooms_messages (
+	messageID INT NOT NULL REFERENCES messages(id) ON DELETE CASCADE,
+	chatroomsID INT NOT NULL REFERENCES chatrooms(id) ON DELETE CASCADE,
+	authorID INT NOT NULL REFERENCES users(id) ON DELETE CASCADE
+)
