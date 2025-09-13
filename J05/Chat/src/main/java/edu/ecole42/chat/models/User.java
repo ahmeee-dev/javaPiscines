@@ -14,9 +14,9 @@ public class User {
 
 
 	public boolean equals(User user) {
-		if (this == user || (this.login.equals(user.getLogin()) &&
-				this.password.equals(user.getPassword()) &&
-				this.ID == getID())) {
+		if (this == user || (this.login.equals(user.getLogin())
+		&& this.password.equals(user.getPassword())
+		&& this.ID == getID())) {
 				return true;
 		}
 		return false;
