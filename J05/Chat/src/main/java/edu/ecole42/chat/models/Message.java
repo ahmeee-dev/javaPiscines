@@ -52,6 +52,9 @@ public class Message {
 		} catch (SQLException err) { System.out.println(err.getMessage()); }
 	}
 
+	public void setAuthor(int ID) { this.authorID = ID; }
+	public void setRoom(int ID) { this.roomID = ID; }
+	public void setDateTime(LocalDateTime dateTime) { this.dateTime = dateTime; }
 	public void setText(String text) { this.text = text; }
 	public void setID(int ID) { this.ID = ID;}
 	public int getID() { return this.ID; }

@@ -41,6 +41,21 @@ public class MessageRepositoryImpl implements MessageRepository {
 	};
 
 	@Override
+	public void update(Message message) {
+		String sql = "UPDATE chat.messages SET authorID = ?, roomID = ?, text = ?, date = ? WHERE id = ?";
+
+		try (Connection conn = DBConnection.getConnection()) {
+			PreparedStatement st = conn.prepareStatement(sql);
+			Object[] params = { message.getAuthor(), message.getRoom(), message.getText(), message.getDateTime(), message.getID()};
+			for (int i = 0; i < params.length; i++) { st.setObject(i + 1, params[i]);}
+			if (st.executeUpdate() > 0) {
+				System.out.println("Updated a line! Congratulations");
+			}
+			
+		} catch (SQLException err) { System.err.println("Error: " + err.getMessage());}
+	}
+
+	@Override
 	public void save(Message message) {
 
 		try {

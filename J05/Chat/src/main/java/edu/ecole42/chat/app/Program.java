@@ -19,8 +19,8 @@ public class Program {
 		Message message = msgRepo.findByID(ID).orElseThrow(() -> (new RuntimeException("Message not found")));
 		//message.printDetails();
 		message.setText("carloooo");
-		System.out.println("We got that far dawh?");
-		msgRepo.save(message);
+	
+		msgRepo.update(message);
 		DBConnection.shutdown();
 		scan.close();
 	}
