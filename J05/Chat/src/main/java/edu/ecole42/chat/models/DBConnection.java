@@ -3,6 +3,8 @@ package edu.ecole42.chat.models;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import javax.sql.DataSource;
+
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -27,19 +29,7 @@ public class DBConnection {
 
 	}
 
-	// public static void readSchema(Connection conn) {
-	// 	try {
-	// 		String sql = new String(Files.readAllBytes(Paths.get("../resources/schema.sql")), StandardCharsets.UTF_8);
-	// 		for (String line : sql.split(";")) {
-	// 			if (!line.trim().isEmpty()) {
-	// 				try (Statement st = conn.createStatement()) {
-	// 					st.execute(line);
-	// 				}
-	// 			}
-	// 		}
-	// 	} catch (Exception err) { System.err.println("Error: " + err.getMessage());}
-	// }
-
+	public static DataSource getDataSource() { return ds; }
 	public static Connection getConnection() throws  SQLException {
 		return ds.getConnection();
 	}
