@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class Chatroom {
-	private static int count = 0;
 	private int ID;
 	private User owner;
 	private List<Message> messagesList;

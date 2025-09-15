@@ -5,4 +5,5 @@ import edu.ecole42.chat.models.Message;
 
 public interface MessageRepository {
 	public Optional<Message>findByID(int ID);
+	public void save(Message message);
 }

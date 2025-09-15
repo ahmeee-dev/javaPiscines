@@ -52,7 +52,7 @@ public class Message {
 		} catch (SQLException err) { System.out.println(err.getMessage()); }
 	}
 
-
+	public void setID(int ID) { this.ID = ID; }
 	public int getID() { return this.ID; }
 	public int getAuthor() { return this.authorID; }
 	public int getRoom() { return this.roomID; }
