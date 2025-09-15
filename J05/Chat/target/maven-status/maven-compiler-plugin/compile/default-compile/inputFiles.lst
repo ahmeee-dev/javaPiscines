@@ -1,4 +1,5 @@
 /Users/ahmed/Desktop/java_piscines/J05/Chat/src/main/java/edu/ecole42/chat/app/Program.java
+/Users/ahmed/Desktop/java_piscines/J05/Chat/src/main/java/edu/ecole42/chat/exceptions/NotSavedSubEntityException.java
 /Users/ahmed/Desktop/java_piscines/J05/Chat/src/main/java/edu/ecole42/chat/models/Chatroom.java
 /Users/ahmed/Desktop/java_piscines/J05/Chat/src/main/java/edu/ecole42/chat/models/DBConnection.java
 /Users/ahmed/Desktop/java_piscines/J05/Chat/src/main/java/edu/ecole42/chat/models/Message.java

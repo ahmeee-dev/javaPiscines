@@ -1,5 +1,6 @@
 edu/ecole42/chat/repositories/MessageRepositoryImpl.class
 edu/ecole42/chat/models/DBConnection.class
+edu/ecole42/chat/exceptions/NotSavedSubEntityException.class
 edu/ecole42/chat/repositories/MessageRepository.class
 edu/ecole42/chat/models/Chatroom.class
 edu/ecole42/chat/app/Program.class

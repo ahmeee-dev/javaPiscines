@@ -9,9 +9,16 @@ public class User {
 	private int ID;
 	private String login;
 	private String password;
-	private List<Chatroom> created_rooms;
-	private List<Chatroom> partecipant_rooms; 
+	private List<Chatroom> createdRooms;
+	private List<Chatroom> partecipatedRooms; 
 
+	public User(int ID, String login, String password, List<Chatroom> createdRooms, List <Chatroom> partecipatedRooms) {
+		this.ID = ID;
+		this.login = login;
+		this.password = password;
+		this.createdRooms = createdRooms;
+		this.partecipatedRooms = partecipatedRooms;
+	}
 
 	public boolean equals(User user) {
 		if (this == user || (this.login.equals(user.getLogin())

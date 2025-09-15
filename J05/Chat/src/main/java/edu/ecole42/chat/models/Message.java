@@ -47,12 +47,13 @@ public class Message {
 				System.out.println("text=\"" + text + "\",");
 				System.out.println("dateTime=" + Program.formatTime(dateTime));
 				System.out.println("}");
-			} catch (Exception err) { System.err.println(err.getMessage()); }
+			} catch (SQLException err) { System.err.println(err.getMessage()); }
 		
 		} catch (SQLException err) { System.out.println(err.getMessage()); }
 	}
 
-	public void setID(int ID) { this.ID = ID; }
+	public void setText(String text) { this.text = text; }
+	public void setID(int ID) { this.ID = ID;}
 	public int getID() { return this.ID; }
 	public int getAuthor() { return this.authorID; }
 	public int getRoom() { return this.roomID; }

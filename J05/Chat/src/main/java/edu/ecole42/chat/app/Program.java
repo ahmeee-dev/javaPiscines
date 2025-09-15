@@ -17,8 +17,12 @@ public class Program {
 		int ID = scan.nextInt();
 		MessageRepository msgRepo = new MessageRepositoryImpl();
 		Message message = msgRepo.findByID(ID).orElseThrow(() -> (new RuntimeException("Message not found")));
-		message.printDetails();
+		//message.printDetails();
+		message.setText("carloooo");
+		System.out.println("We got that far dawh?");
+		msgRepo.save(message);
 		DBConnection.shutdown();
+		scan.close();
 	}
 
 	public static String formatTime(LocalDateTime dateTime) {

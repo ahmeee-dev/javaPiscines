@@ -8,6 +8,12 @@ public class Chatroom {
 	private User owner;
 	private List<Message> messagesList;
 
+	public Chatroom(int ID, User owner, List<Message> messageList) {
+		this.ID = ID;
+		this.owner = owner;
+		this.messagesList = messageList;
+	}
+
 	@Override
 	public String toString() {String str = "ID: " + this.ID + ", owner: " + this.owner; return str; }
 
