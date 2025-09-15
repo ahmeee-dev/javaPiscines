@@ -4,5 +4,5 @@ import java.util.Optional;
 import edu.ecole42.chat.models.Message;
 
 public interface MessageRepository {
-	Optional<Message>findByID(int ID);
+	public Optional<Message>findByID(int ID);
 }

@@ -1,33 +1,74 @@
 package edu.ecole42.chat.models;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-class Message {
+import edu.ecole42.chat.app.Program;
 
-	private static int count = 0;
+public class Message {
+
 	private int ID;
-	private User author;
-	private Chatroom room;
+	private int authorID;
+	private int roomID;
 	private String text;
 	private LocalDateTime dateTime;
 
+	public Message(int ID, int authorID, int room, String text, LocalDateTime dateTime) {
+		this.ID = ID;
+		this.authorID = authorID;
+		this.roomID = room;
+		this.text = text;
+		this.dateTime = dateTime;
+	}
+
+	public void printDetails() {
+
+		String userSQL = "SELECT * FROM chat.users WHERE users.ID = ?";
+		String roomSQL = "SELECT * FROM chat.chatrooms WHERE chatrooms.ID = ?";
+		try (Connection conn = DBConnection.getConnection(); ) {
+			PreparedStatement userSt = conn.prepareStatement(userSQL);
+			PreparedStatement roomSt = conn.prepareStatement(roomSQL);
+			userSt.setInt(1, authorID);
+			roomSt.setInt(1, roomID);
+			
+			try {
+				ResultSet roomRs = roomSt.executeQuery();
+				ResultSet userRs = userSt.executeQuery();
+				userRs.next();
+				roomRs.next();
+				System.out.println("message: {");
+				System.out.println("id=" + ID + ",");
+				System.out.println("author={id=" + userRs.getInt("ID") + ",login=\"" + userRs.getString("login") + "\",password=\"" + userRs.getString("password") + ",createdRooms=null,rooms=null},");
+				System.out.println("room={id=" + roomRs.getInt("ID") + ",name=\"" + roomRs.getString("name") + ",creator=null,messages=null},");
+				System.out.println("text=\"" + text + "\",");
+				System.out.println("dateTime=" + Program.formatTime(dateTime));
+				System.out.println("}");
+			} catch (Exception err) { System.err.println(err.getMessage()); }
+		
+		} catch (SQLException err) { System.out.println(err.getMessage()); }
+	}
+
+
 	public int getID() { return this.ID; }
-	public User getAuthor() { return this.author; }
-	public Chatroom getRoom() { return this.room; }
+	public int getAuthor() { return this.authorID; }
+	public int getRoom() { return this.roomID; }
 	public String getText() { return this.text; }
 	public LocalDateTime getDateTime() { return this.dateTime; }
 
 	@Override
 	public String toString() {
-		String str = "ID: " + this.ID + ", author: " + this.author + ", room: " + this.room + ", text: " + this.text + ", dateTime: " + this.dateTime;
+		String str = "ID: " + this.ID + ", author: " + this.authorID + ", room: " + this.roomID + ", text: " + this.text + ", dateTime: " + this.dateTime;
 		return str;
 	}
 
 	public boolean equals(Message mess) {
-		if (mess == this || (this.author == mess.getAuthor()
+		if (mess == this || (this.authorID == mess.getAuthor()
 		&& this.ID == mess.getID()
-		&& this.room == mess.getRoom()
+		&& this.roomID == mess.getRoom()
 		&& this.text.equals(mess.getText())
 		&& this.dateTime == mess.getDateTime())) {
 			return true;

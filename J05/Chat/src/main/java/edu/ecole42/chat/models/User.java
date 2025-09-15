@@ -22,6 +22,7 @@ public class User {
 		return false;
 	}
 
+	@Override
 	public String toString() {
 		String str = "ID: " + this.ID + ", login: " + this.login + " passowrd: " + this.password;
 		return str;

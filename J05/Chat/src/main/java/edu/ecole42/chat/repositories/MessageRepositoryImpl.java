@@ -9,9 +9,10 @@ import edu.ecole42.chat.models.DBConnection;
 import edu.ecole42.chat.models.Message;
 
 
-public class MessageRepositoryImpl {
+public class MessageRepositoryImpl implements MessageRepository {
+	@Override
 	public Optional<Message>findByID(int ID) {
-		String sql = "SELECT * FROM Chat.messages WHERE messages.ID = ?";
+		String sql = "SELECT * FROM chat.messages WHERE messages.ID = ?";
 		try (Connection conn = DBConnection.getConnection();) {
 			PreparedStatement st = conn.prepareStatement(sql);
 			st.setInt(1, ID);
@@ -26,14 +27,15 @@ public class MessageRepositoryImpl {
 					rs.getString("text"),
 					rs.getTimestamp("date").toLocalDateTime()
 				);
-				return Optional.of(message);
+				return Optional.ofNullable(message);
 			} catch (SQLException err) {
 				System.out.println(err.getMessage());
-				return (null);
+				return (Optional.empty());
 			}
 		} catch (SQLException err) {
 			System.out.println(err.getMessage());
-			return (null);
+			return (Optional.empty());
 		}
 	};
+
 }
