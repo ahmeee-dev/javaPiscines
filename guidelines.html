@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Java Code Style Guidelines</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      line-height: 1.6;
+      margin: 2rem;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 1rem;
+      overflow-x: auto;
+    }
+    ul {
+      list-style-type: disc;
+      margin-left: 1.5rem;
+    }
+    .good { color: green; }
+    .bad { color: red; text-decoration: line-through; }
+  </style>
+</head>
+<body>
+
+  <h1>Java Code Style Guidelines</h1>
+
+  <h2>1. Class Naming</h2>
+  <ul>
+    <li>Class names must use <strong>PascalCase</strong> (e.g., <code>UserAccount</code>, <code>MainController</code>).</li>
+  </ul>
+
+  <h2>2. Magic Numbers</h2>
+  <ul>
+    <li><strong>Magic numbers are forbidden</strong>.</li>
+    <li>All numeric values with contextual meaning must be defined as <strong>named constants</strong>, declared as <code>static final</code> fields.<br/>
+      Example: <code>private static final int MAX_USERS = 100;</code>
+    </li>
+  </ul>
+
+  <h2>3. Boolean Method Naming</h2>
+  <ul>
+    <li>Methods that return a boolean value must begin with the prefix <code>is</code> (e.g., <code>isValid()</code>, <code>isEmpty()</code>, <code>isAvailable()</code>).</li>
+  </ul>
+
+  <h2>4. Procedure Naming (Void Methods)</h2>
+  <ul>
+    <li>Void methods must be named using <strong>verbs</strong> (e.g., <code>printReport()</code>, <code>calculateSum()</code>).</li>
+    <li>A procedure must do <strong>only</strong> what its name suggests (e.g., <code>printResult()</code> must only print, not calculate).</li>
+  </ul>
+
+  <h2>5. Local Variables</h2>
+  <ul>
+    <li>All local variables must have <strong>meaningful and descriptive names</strong>, using <strong>camelCase</strong> (e.g., <code>totalScore</code>, <code>userName</code>, <code>inputBuffer</code>).</li>
+  </ul>
+
+  <h2>6. Loop Variable Naming</h2>
+  <ul>
+    <li>For counters in simple loops, short names such as <code>i</code>, <code>j</code>, <code>k</code>, <code>l</code> are acceptable.</li>
+  </ul>
+
+  <h2>7. Spacing Around Operators</h2>
+  <ul>
+    <li>All <strong>binary operators</strong> must have <strong>exactly one space before and after</strong>.</li>
+    <li><span class="good">✅ <code>a + b</code></span></li>
+    <li><span class="bad">❌ <code>a+b</code></span> or <span class="bad">❌ <code>a  +  b</code></span></li>
+  </ul>
+
+  <h2>8. Block Structures and Braces</h2>
+  <ul>
+    <li><strong>All control structures</strong> (<code>if</code>, <code>else</code>, <code>for</code>, <code>while</code>, etc.) must use <strong>curly braces</strong>, even for single statements.</li>
+    <li>The <strong>opening brace</strong> <code>{</code> must be placed <strong>on the same line</strong> as the control statement.</li>
+  </ul>
+  <pre><code>if (isReady) {
+    startProcessing();
+}</code></pre>
+
+  <h2>9. Blank Lines</h2>
+  <ul>
+    <li><strong>Unnecessary blank lines must be avoided</strong>.</li>
+    <li>Blank lines should be used <strong>only</strong> to separate logical sections of code and improve readability.</li>
+  </ul>
+
+  <h2>10. Indentation</h2>
+  <ul>
+    <li>Every block of code must be indented using a <strong>consistent, fixed-width indentation</strong>.</li>
+    <li><strong>Recommended:</strong> 4 spaces per indentation level (no tabs).</li>
+  </ul>
+
+</body>
+</html>

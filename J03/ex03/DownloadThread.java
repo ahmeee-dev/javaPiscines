@@ -1,8 +1,6 @@
-import java.nio.*;
 import java.nio.channels.Channels;
 import java.nio.channels.FileChannel;
 import java.nio.channels.ReadableByteChannel;
-import java.util.concurrent.ExecutionException;
 import java.io.FileOutputStream;
 import java.net.URL;
 
