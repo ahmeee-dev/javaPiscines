@@ -6,3 +6,5 @@
 /Users/ahmed/Desktop/java_piscines/J05/Chat/src/main/java/edu/ecole42/chat/models/User.java
 /Users/ahmed/Desktop/java_piscines/J05/Chat/src/main/java/edu/ecole42/chat/repositories/MessageRepository.java
 /Users/ahmed/Desktop/java_piscines/J05/Chat/src/main/java/edu/ecole42/chat/repositories/MessageRepositoryImpl.java
+/Users/ahmed/Desktop/java_piscines/J05/Chat/src/main/java/edu/ecole42/chat/repositories/UserRepository.java
+/Users/ahmed/Desktop/java_piscines/J05/Chat/src/main/java/edu/ecole42/chat/repositories/UserRepositoryImpl.java

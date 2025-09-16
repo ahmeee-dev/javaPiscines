@@ -17,3 +17,10 @@ INSERT INTO chat.messages (authorID, roomID, text, date) VALUES
 	(3, 3, 'tutta roba regolare', NOW()),
 	(4, 5, 'mareoooo', NOW()),
 	(5, 4, 'ramoeeeeee', NOW());
+
+INSERT INTO chat.users_chatrooms(userID, chatroomID) VALUES
+	(1, 1),
+	(2, 2),
+	(3, 3),
+	(4, 4),
+	(5, 5);
