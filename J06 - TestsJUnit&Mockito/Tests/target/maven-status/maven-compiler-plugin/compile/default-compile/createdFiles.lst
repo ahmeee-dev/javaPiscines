@@ -1,1 +1,3 @@
+edu/ecole42/numbers/app/Program.class
 edu/ecole42/numbers/NumberWorker.class
+edu/ecole42/numbers/exceptions/IllegalNumberException.class
