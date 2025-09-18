@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="edu.ecole42.repositories.EmbeddedDataSourceTest" time="0.014" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="edu.ecole42.repositories.ProductsRepositoryJcdbImplTest" time="0.309" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="24"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -59,9 +59,27 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="68.0"/>
   </properties>
-  <testcase name="isGetConnectionVoid" classname="edu.ecole42.repositories.EmbeddedDataSourceTest" time="0.012">
+  <testcase name="isFindByIdWorking" classname="edu.ecole42.repositories.ProductsRepositoryJcdbImplTest" time="0.28">
+    <system-out><![CDATA[Fionda
+
+
+
+Fionda
+]]></system-out>
+    <system-err><![CDATA[set 18, 2025 12:50:15 PM org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory initDatabase
+INFORMAZIONI: Starting embedded database: url='jdbc:hsqldb:mem:testdb:13017079351625', username='sa'
+]]></system-err>
+  </testcase>
+  <testcase name="isUpdateProductWorking" classname="edu.ecole42.repositories.ProductsRepositoryJcdbImplTest" time="0.015">
+    <system-out><![CDATA[Changed lines: 1
+]]></system-out>
     <system-err><![CDATA[set 18, 2025 12:50:16 PM org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory initDatabase
-INFORMAZIONI: Starting embedded database: url='jdbc:hsqldb:mem:testdb:13017374699208', username='sa'
+INFORMAZIONI: Starting embedded database: url='jdbc:hsqldb:mem:testdb:13017345188583', username='sa'
+]]></system-err>
+  </testcase>
+  <testcase name="isFindAllWorking" classname="edu.ecole42.repositories.ProductsRepositoryJcdbImplTest" time="0.012">
+    <system-err><![CDATA[set 18, 2025 12:50:16 PM org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory initDatabase
+INFORMAZIONI: Starting embedded database: url='jdbc:hsqldb:mem:testdb:13017361012291', username='sa'
 ]]></system-err>
   </testcase>
 </testsuite>

@@ -52,7 +52,7 @@ public class ProductRepositoryJcdbImpl implements ProductRepository {
 
 	@Override
 	public void update(Product product) {
-		String sql = "UPDATE * FROM product SET name = ?, price = ? WHERE id = ?;";
+		String sql = "UPDATE product SET name = ?, price = ? WHERE id = ?;";
 		int changed = 0;
 		try (Connection conn = dataSource.getConnection()) {
 			PreparedStatement st = conn.prepareStatement(sql);

@@ -1,3 +1,6 @@
 edu/ecole42/numbers/app/Program.class
+edu/ecole42/repositories/ProductRepository.class
+edu/ecole42/modules/Product.class
+edu/ecole42/repositories/ProductRepositoryJcdbImpl.class
 edu/ecole42/numbers/NumberWorker.class
 edu/ecole42/numbers/exceptions/IllegalNumberException.class

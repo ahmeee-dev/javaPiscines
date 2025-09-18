@@ -12,15 +12,16 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 public class EmbeddedDataSourceTest {
 	
-	static DataSource dataSource;
+	DataSource dataSource;
 
 	@BeforeEach
-	public static void init() {
+	public void init() {
 		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder()
 		.setType(EmbeddedDatabaseType.HSQL)
+		.setName("testdb:" + System.nanoTime())
 		.addScript("schema.sql")
 		.addScript("data.sql");
-		dataSource = builder.build();
+		this.dataSource = builder.build();
 	}
 
 	@Test

@@ -1,5 +1,7 @@
 package edu.ecole42.modules;
 
+import java.util.Objects;
+
 public class Product {
 	private int id;
 	private String name;
@@ -15,4 +17,20 @@ public class Product {
 
 	public int getPrice() { return this.price; }
 	public void setPrice(int price) { this.price = price; }
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (!(o instanceof Product)) return false;
+		Product product = (Product) o;
+		return (this.id == product.getId()
+		&& this.name.equals(product.getName())
+		&& this.price == product.getPrice());
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, name, price);
+	}
 }
