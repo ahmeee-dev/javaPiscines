@@ -10,7 +10,7 @@ import java.util.Optional;
 
 import javax.sql.DataSource;
 
-import edu.ecole42.modules.Product;
+import edu.ecole42.models.Product;
  
 
 public class ProductRepositoryJcdbImpl implements ProductRepository {

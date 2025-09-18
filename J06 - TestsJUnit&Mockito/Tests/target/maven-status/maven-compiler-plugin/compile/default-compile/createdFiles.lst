@@ -1,6 +1,10 @@
-edu/ecole42/numbers/app/Program.class
-edu/ecole42/repositories/ProductRepository.class
-edu/ecole42/modules/Product.class
 edu/ecole42/repositories/ProductRepositoryJcdbImpl.class
 edu/ecole42/numbers/NumberWorker.class
 edu/ecole42/numbers/exceptions/IllegalNumberException.class
+edu/ecole42/repositories/UserRepository.class
+edu/ecole42/models/Product.class
+edu/ecole42/numbers/app/Program.class
+edu/ecole42/repositories/ProductRepository.class
+edu/ecole42/services/UserServiceImpl.class
+edu/ecole42/exceptions/AlreadyAuthenticatedException.class
+edu/ecole42/models/User.class

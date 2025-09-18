@@ -1,6 +1,10 @@
-/Users/ahmed/Desktop/javaPiscines/J06 - TestsJUnit&Mockito/Tests/src/main/java/edu/ecole42/modules/Product.java
+/Users/ahmed/Desktop/javaPiscines/J06 - TestsJUnit&Mockito/Tests/src/main/java/edu/ecole42/exceptions/AlreadyAuthenticatedException.java
+/Users/ahmed/Desktop/javaPiscines/J06 - TestsJUnit&Mockito/Tests/src/main/java/edu/ecole42/models/Product.java
+/Users/ahmed/Desktop/javaPiscines/J06 - TestsJUnit&Mockito/Tests/src/main/java/edu/ecole42/models/User.java
 /Users/ahmed/Desktop/javaPiscines/J06 - TestsJUnit&Mockito/Tests/src/main/java/edu/ecole42/numbers/NumberWorker.java
 /Users/ahmed/Desktop/javaPiscines/J06 - TestsJUnit&Mockito/Tests/src/main/java/edu/ecole42/numbers/app/Program.java
 /Users/ahmed/Desktop/javaPiscines/J06 - TestsJUnit&Mockito/Tests/src/main/java/edu/ecole42/numbers/exceptions/IllegalNumberException.java
 /Users/ahmed/Desktop/javaPiscines/J06 - TestsJUnit&Mockito/Tests/src/main/java/edu/ecole42/repositories/ProductRepository.java
 /Users/ahmed/Desktop/javaPiscines/J06 - TestsJUnit&Mockito/Tests/src/main/java/edu/ecole42/repositories/ProductRepositoryJcdbImpl.java
+/Users/ahmed/Desktop/javaPiscines/J06 - TestsJUnit&Mockito/Tests/src/main/java/edu/ecole42/repositories/UserRepository.java
+/Users/ahmed/Desktop/javaPiscines/J06 - TestsJUnit&Mockito/Tests/src/main/java/edu/ecole42/services/UserServiceImpl.java

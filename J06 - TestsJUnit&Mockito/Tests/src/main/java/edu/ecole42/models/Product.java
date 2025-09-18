@@ -1,4 +1,4 @@
-package edu.ecole42.modules;
+package edu.ecole42.models;
 
 import java.util.Objects;
 

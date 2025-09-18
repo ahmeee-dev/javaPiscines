@@ -3,7 +3,7 @@ package edu.ecole42.repositories;
 import java.util.List;
 import java.util.Optional;
 
-import edu.ecole42.modules.Product;
+import edu.ecole42.models.Product;
 
 public interface  ProductRepository {
 		

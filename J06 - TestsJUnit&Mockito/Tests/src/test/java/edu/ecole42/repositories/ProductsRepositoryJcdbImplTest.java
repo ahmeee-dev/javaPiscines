@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
-import edu.ecole42.modules.Product;
+import edu.ecole42.models.Product;
 public class ProductsRepositoryJcdbImplTest {
 	
 	DataSource dataSource;
