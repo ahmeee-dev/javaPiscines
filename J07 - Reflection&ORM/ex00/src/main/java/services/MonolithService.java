@@ -1,16 +1,13 @@
-package ex00.app;
+package services;
 
-import ex00.interfaces.CarClass;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Scanner;
+import models.CarClass;
 
-// ⚠️ cambia tutti i nextInt in parseInt(nextLine())
-
-
-public class Program {
-	public static void main(String[] args) throws Exception {	
+public class MonolithService {
+	public static void objectCycle() throws Exception {
 		Class<?> carClass = CarClass.class;
 		Class<?>[] classes = carClass.getDeclaredClasses();
 
@@ -21,7 +18,7 @@ public class Program {
 		System.out.println("------------");
 		System.out.println("Enter Class name");
 		Scanner myScan = new Scanner(System.in);
-		String searchedClass = myScan.nextLine();
+		String searchedClass = "models.CarClass$" + myScan.nextLine();
 		Class<?> foundClass = Class.forName(searchedClass);
 		System.out.println("fields:");
 		Field[] fields = foundClass.getDeclaredFields();
@@ -35,8 +32,8 @@ public class Program {
 		}
 		System.out.println("-------------");
 		System.out.println("Let's create an Object");
-		System.out.println("OffRoadCar or UtilityCar ?");
-		Class<?> toCreate = Class.forName(myScan.nextLine());
+		
+		Class<?> toCreate = foundClass;
 		Constructor<?> constructor = toCreate.getConstructor(); //in this moment is default, now we'll change the private values
 		Object instance = constructor.newInstance();
 		Field[] instanceFields = instance.getClass().getDeclaredFields();
@@ -67,21 +64,21 @@ public class Program {
 		System.out.println("Enter field to change:");
 		String fieldTochange = myScan.nextLine();
 		for (Field field : fields) {
-			if (fieldTochange.equals("model")) {
-				System.out.println("\tEnter new value:");
+			if (field.getName().equals("brand") && fieldTochange.equals("model")) {
+				System.out.println("Enter new value:");
 				field.setAccessible(true);
 				field.set(instance, myScan.nextLine());
 			}
-			else if (fieldTochange.equals("brand")) {
-				System.out.println("\tEnter new value:");
+			else if (field.getName().equals("brand") && fieldTochange.equals("brand")) {
+				System.out.println("Enter new value:");
 				field.setAccessible(true);
 				field.set(instance, myScan.nextLine());
-			} else if (fieldTochange.equals("horsepower")) {
-				System.out.println("\tEnter new value:");
+			} else if (field.getName().equals("horsepower") && fieldTochange.equals("horsepower")) {
+				System.out.println("Enter new value:");
 				field.setAccessible(true);
 				field.set(instance, Integer.parseInt(myScan.nextLine()));
-			} else if (fieldTochange.equals("weight")) {
-				System.out.println("\tEnter new value:");
+			} else if (field.getName().equals("weight") && fieldTochange.equals("weight")) {
+				System.out.println("Enter new value:");
 				field.setAccessible(true);
 				field.set(instance, Integer.parseInt(myScan.nextLine()));
 			}
@@ -96,33 +93,38 @@ public class Program {
 		Object[] paramValues = new Object[paramsStrings.length];
 		Class<?>[] paramTypes = new Class[paramsStrings.length];
 		for (int i = 0; i < paramsStrings.length; i++) {
-			switch (paramsStrings[i]) {
+			switch (paramsStrings[i].trim()) {
 				case "int":
 					System.out.println("Enter int value:");
 					paramValues[i] = Integer.parseInt(myScan.nextLine());
 					paramTypes[i] = int.class;
+					break;
 				case "String":
 					System.out.println("Enter String value:");
 					paramValues[i] = myScan.nextLine();
 					paramTypes[i] = String.class;
-				case "Boolean":
+					break;
+				case "boolean":
 					System.out.println("Enter Boolean value:");
 					paramValues[i] = Boolean.parseBoolean(myScan.nextLine());
-					paramTypes[i] = Boolean.class;
-				case "Double":
+					paramTypes[i] = boolean.class;
+					break;
+				case "double":
 					System.out.println("Enter Double value:");
 					paramValues[i] = Double.parseDouble(myScan.nextLine());
-					paramTypes[i] = Double.class;
-				case "Long":
+					paramTypes[i] = double.class;
+					break;
+				case "long":
 					System.out.println("Enter Long value:");
 					paramValues[i] = Long.parseLong(myScan.nextLine());
-					paramTypes[i] = Long.class;
+					paramTypes[i] = long.class;
+					break;
 			}
 		}
 		Method method = toCreate.getDeclaredMethod(toCall, paramTypes);
-		method.invoke(instance, paramValues);
-
+		Object result = method.invoke(instance, paramValues);
+		System.out.println(result);
 		myScan.close();
 	}
-
+	
 }

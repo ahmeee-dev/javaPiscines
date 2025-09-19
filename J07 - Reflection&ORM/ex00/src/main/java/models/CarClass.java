@@ -1,4 +1,4 @@
-package ex00.interfaces;
+package models;
 
 import java.util.StringJoiner;
 
@@ -81,7 +81,7 @@ public interface CarClass {
 				.toString());
 		}
 	
-		public int runCar(int min, int max) {
+		public int runCar(int min, double max) {
 			int kilometeres = (int) (Math.random() * (max - min + 1) + min);
 			return kilometeres;
 		}
