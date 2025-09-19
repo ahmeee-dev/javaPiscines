@@ -41,9 +41,7 @@ public interface CarClass {
 				.toString());
 		}
 
-		public int runCar() {
-			int min = 25;
-			int max = 1000;
+		public int runCar(int min, int max) {
 			int kilometeres = (int) (Math.random() * (max - min + 1) + min);
 			return kilometeres;
 		}
@@ -83,9 +81,7 @@ public interface CarClass {
 				.toString());
 		}
 	
-		public int runCar() {
-			int min = 100;
-			int max = 25000;
+		public int runCar(int min, int max) {
 			int kilometeres = (int) (Math.random() * (max - min + 1) + min);
 			return kilometeres;
 		}
