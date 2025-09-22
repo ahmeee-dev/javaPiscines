@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.sql.DataSource;
 
@@ -14,25 +15,27 @@ import annotations.OrmEntity;
 
 public class OrmManager {
 	DataSource dataSource = DBConnectionManager.getDataSource();
+	String tableName;
 
 	public void OrmTableReflection(Object caller) {
 		Class<?> clazz = caller.getClass();
 		if (clazz.isAnnotationPresent(OrmEntity.class)) {
 			OrmEntity ormEntity = clazz.getAnnotation(OrmEntity.class);
 			createTable(ormEntity.table());
+			tableName = ormEntity.table();
 			System.out.println("Created table " + ormEntity.table());
 			for (Field f : clazz.getDeclaredFields()) {
 				if (f.isAnnotationPresent(OrmColumn.class)) {
-					OrmColumnReflection(f, ormEntity.table());
+					OrmColumnReflection(f);
 				}
 				if (f.isAnnotationPresent(OrmColumnId.class)) {
-					OrmColumnIDReflection(ormEntity.table());
+					OrmColumnIDReflection();
 				}
 			}
 		}
 	}
 
-	public void OrmColumnIDReflection(String tableName) {
+	public void OrmColumnIDReflection() {
 		try (Connection conn = dataSource.getConnection()) {
 			String sql = """
 					ALTER TABLE ?
@@ -44,34 +47,34 @@ public class OrmManager {
 		} catch (SQLException err) { System.err.println("Error: " + err.getMessage());}
 	}
 
-	public void OrmColumnReflection(Field f, String tableName) {
+	public void OrmColumnReflection(Field f) {
 		OrmColumn ormColumn = f.getClass().getAnnotation(OrmColumn.class);
-		if (setColumn(f, ormColumn, tableName))
+		if (setColumn(f, ormColumn))
 			System.out.println("Added columns to " + tableName);
 		else
 			System.out.println("Failed adding columns to " + tableName);
 	}
 
-	boolean setColumn(Field f, OrmColumn ormColumn, String tableName) {
+	boolean setColumn(Field f, OrmColumn ormColumn) {
 		String value;
 		String valueType = f.getType().getSimpleName();
 		String name = ormColumn.name();
 
 		switch (valueType) {
 			case "Int":
-				value = "INT";
+				value = "INT DEFAULT 0";
 				break;
 			case "String":
-				value = "VARCHAR(" + ormColumn.length() + ")";
+				value = "VARCHAR(" + ormColumn.length() + ") DEFAULT 'Undefined";
 				break;
 			case "boolean":
-				value = "BOOLEAN";
+				value = "BOOLEAN DEFAULT FALSE";
 				break;
 			case "double":
-				value = "DOUBLE";
+				value = "DOUBLE DEFAULT 0.0";
 				break;
 			case "long":
-				value = "BIGINT";
+				value = "BIGINT DEFAULT 0";
 				break;
 			default:
 				throw new AssertionError("Wrong type: " + valueType);
@@ -98,4 +101,38 @@ public class OrmManager {
 		} catch (SQLException err) { System.err.println(err.getMessage());}	
 	}
 	
+	public void save(Object entity) {
+		Field[] fieldList = entity.getClass().getDeclaredFields();
+		try (Connection conn = dataSource.getConnection()) {
+			String sql = "INSERT INTO ? (";
+			for (int i = 0; i < fieldList.length; i++) {
+				sql += fieldList[i].toString();
+				if (i < fieldList.length - 1)
+					sql += ", ";
+				else
+					sql += ") ";
+			}
+			sql += "VALUES (";
+			for (int i = 0; i < fieldList.length; i++) {
+				if (fieldList[i].get(entity).getClass() == String.class) {
+					sql += "'" + fieldList[i].get(entity) + "'";
+				} else { 
+					sql += fieldList[i].get(entity).toString();
+				}
+				if (i < fieldList.length - 1) 
+					sql += ", ";
+				else
+					sql += ")";		
+			}
+			sql += ";";
+			Statement st = conn.createStatement();
+			if (st.execute(sql))
+				System.out.println("✅");
+			else
+				System.out.println("❌");
+		} catch (SQLException | IllegalAccessException err) { System.out.println("Error: " + err.getMessage());}
+	}
+
+
+
 }
