@@ -127,9 +127,9 @@ public class OrmManager {
 			sql += ";";
 			Statement st = conn.createStatement();
 			if (st.execute(sql))
-				System.out.println("✅");
+				System.out.println("Saving Succesfully executed ✅");
 			else
-				System.out.println("❌");
+				System.out.println("Saving failed while executing ❌");
 		} catch (SQLException | IllegalAccessException err) { System.out.println("Error: " + err.getMessage());}
 	}
 
