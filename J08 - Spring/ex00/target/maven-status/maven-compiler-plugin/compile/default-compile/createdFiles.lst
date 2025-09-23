@@ -1,0 +1,10 @@
+Repositories/PrinterWithPrefixImpl.class
+Repositories/RendererStandardImpl.class
+Repositories/Renderer.class
+Repositories/PrinterWithDateTimeImpl.class
+Repositories/PreProcessorToUpperImpl.class
+Repositories/Printer.class
+Repositories/PreProcessor.class
+Repositories/RendererErrImpl.class
+Repositories/PreProcessorToLowerImpl.class
+app/Program.class

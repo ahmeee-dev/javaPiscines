@@ -6,7 +6,20 @@
           http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-	<bean id="PreProcessor" class="Repositories.PreProcessor">
+	<bean id="PreProcessor" class="Repositories.PreProcessorToUpperImpl"/>
+	<bean id="Renderer" class="Repositories.RendererStandardImpl">
+		<constructor-arg ref="PreProcessor"/>
+	</bean>
+	<bean id="PrinterWithPrefix" class="Repositories.PrinterWithPrefixImpl">
+		<constructor-arg ref="Renderer"/>
+		<property name="prefix" value="Prefisso glorioso: "/>
+	</bean>
+
+	<bean id="PrinterWithDateTime" class="Repositories.PrinterWithDateTimeImpl">
+		<constructor-arg ref="Renderer"/>
+	</bean>
+
+
 
 
 </beans>
