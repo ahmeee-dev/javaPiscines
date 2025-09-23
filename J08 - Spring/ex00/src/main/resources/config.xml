@@ -12,7 +12,7 @@
 	</bean>
 	<bean id="PrinterWithPrefix" class="Repositories.PrinterWithPrefixImpl">
 		<constructor-arg ref="Renderer"/>
-		<property name="prefix" value="Prefisso glorioso: "/>
+		<property name="prefix" value="Prefisso: "/>
 	</bean>
 
 	<bean id="PrinterWithDateTime" class="Repositories.PrinterWithDateTimeImpl">
