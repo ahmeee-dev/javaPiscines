@@ -8,13 +8,14 @@
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context.xsd">
 	<context:property-placeholder location="classpath:db.properties"/>
-    <bean id="hikariPool" class="com.zaxxer.hikari.HikariDataSource"> 
+    
+	<bean id="hikariPool" class="com.zaxxer.hikari.HikariDataSource"> 
 		<property name="dbUrl" value="${db.url}"/>
 		<property name="dbUser" value="postgres"/>
 		<property name="dbPassword" value="qwerty007"/>
 		<property name="dbDriverName" value="org.postgresql.Driver"/>
 	</bean>
-	<bean id="hikariPool" class="com.zaxxer.hikari.HikariDataSource"> 
+	<bean id="driverManagerDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
 		<property name="dbUrl" value="${db.url}"/>
 		<property name="dbUser" value="${db.user}"/>
 		<property name="dbPassword" value="${db.password}"/>
